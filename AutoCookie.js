@@ -294,7 +294,9 @@ new AC.Auto('Autoclicker', 'Clicks the cookie once every interval.', 20210117205
 new AC.Auto('Golden Cookie Clicker', 'Clicks golden cookies and other shimmers as they appear.', 202101172057, function() {
 	Game.shimmers.forEach((function(shimmer) {
 		if (!shimmer.wrath || this['Click Wrath Cookies']) {
-			shimmer.pop();
+			if (!Game.shimmerTypes.golden.chain || this['Click Chain Cookies']) {
+				shimmer.pop();
+			}
 		}
 	}).bind(this));
 }, {
@@ -314,6 +316,14 @@ new AC.Auto('Golden Cookie Clicker', 'Clicks golden cookies and other shimmers a
 	'timeCreated': 202101172308,
 	'value': 1,
 	'switchVals': ['Click Wraths Off', 'Click Wraths On'],
+	'zeroOff': true
+},  {
+	'name': 'Click Chain Cookies',
+	'desc': 'Whether or not to click chain cookies.',
+	'type': 'switch',
+	'timeCreated': 202611161200,
+	'value': 1,
+	'switchVals': ['Click Chains Off', 'Click Chains On'],
 	'zeroOff': true
 }, {
 	'name': 'Combo',
